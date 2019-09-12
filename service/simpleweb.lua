@@ -46,9 +46,11 @@ skynet.start(function()
                     local path = action:sub(1,offset-1)
                     local filename = action:sub(offset+1)
                     if path == "/static" then
-                        local content = staticfile[filename]
+                        local sfile = staticfile[filename]
+                        local content = sfile[1]
+                        local mimetype = sfile[2]
                         if content then
-                            response(id, 200, content)
+                            response(id, 200, content, {["Content-Type"] = mimetype})
                         else
                             response(id, 404, "404 Not found")
                         end

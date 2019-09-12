@@ -149,7 +149,7 @@ body {
     -o-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
-    background: url(keys.png) no-repeat;
+    background: url(${base_url}/static/keys.png) no-repeat;
     background-size: 1000px;
     background-position: -1px -1px
 }
@@ -216,7 +216,7 @@ body {
     bottom: 0;
     width: 58px;
     height: 58px;
-    background: url(keys.png) no-repeat;
+    background: url(${base_url}/static/keys.png) no-repeat;
     background-size: 1000px
 }
 
@@ -235,7 +235,7 @@ body {
     top: 0;
     width: 58px;
     height: 58px;
-    background: url(keys.png) no-repeat;
+    background: url(${base_url}/static/keys.png) no-repeat;
     background-size: 1000px
 }
 
@@ -249,7 +249,7 @@ body {
     top: 56px;
 	width: 58px;
 	height: 58px;
-	background: url(keys.png) no-repeat;
+	background: url(${base_url}/static/keys.png) no-repeat;
 	background-size: 1000px;
     left: -55px;
     background-position: -521px -315px
@@ -265,7 +265,7 @@ body {
     right: -65px;
     width: 58px;
     height: 58px;
-    background: url(keys.png) no-repeat;
+    background: url(${base_url}/static/keys.png) no-repeat;
     background-size: 1000px
 }
 

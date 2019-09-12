@@ -5,15 +5,23 @@ COPY build.sh /build.sh
 RUN sh build.sh
 
 FROM alpine
-COPY --from=builder /phicomm-tv-ctrl/phicomm-tv-ctrl.tar.gz /
-RUN tar -zxvf /phicomm-tv-ctrl.tar.gz
+RUN apk add --no-cache tini
+COPY --from=builder /skynet-bin.tar.gz /
+RUN tar -zxvf /skynet-bin.tar.gz
+
+RUN mkdir /phicomm-tv-ctrl
 WORKDIR /phicomm-tv-ctrl
+RUN ln -s /skynet-bin skynet
+COPY etc /phicomm-tv-ctrl/etc
+COPY lualib /phicomm-tv-ctrl/lualib
+COPY service /phicomm-tv-ctrl/service
+COPY static /phicomm-tv-ctrl/static
+COPY start.sh /phicomm-tv-ctrl/start.sh
 RUN chmod +x start.sh && chmod +x skynet/skynet
+
 ENV PORT=80
 ENV TV_HOST=192.168.2.3:8080
 EXPOSE 80
-RUN apk add --no-cache tini
-COPY static/index.html /phicomm-tv-ctrl/static/index.html
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["./start.sh"]
 

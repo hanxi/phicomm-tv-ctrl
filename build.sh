@@ -1,26 +1,18 @@
 #!/bin/sh
 
-rm -rf phicomm-tv-ctrl
-git clone https://github.com/hanxi/phicomm-tv-ctrl.git
-cd phicomm-tv-ctrl
-
-git submodule update --init
+rm -rf skynet
+git clone https://github.com/cloudwu/skynet.git
 cd skynet
+git checkout v1.2.0
 make linux MALLOC_STATICLIB= SKYNET_DEFINES=-DNOUSE_JEMALLOC
 cd ..
 
-mkdir -p bin
-cp -f start.sh bin/
-cp -rf etc bin/
-cp -rf lualib bin/
-cp -rf service bin/
-cp -rf static bin/
-mkdir -p bin/skynet
-cp -rf skynet/cservice bin/skynet/
-cp -rf skynet/luaclib bin/skynet/
-cp -rf skynet/lualib bin/skynet/
-cp -rf skynet/service bin/skynet/
-cp -f skynet/skynet bin/skynet/
+mkdir -p skynet-bin
+cp -rf skynet/cservice skynet-bin/
+cp -rf skynet/luaclib skynet-bin/
+cp -rf skynet/lualib skynet-bin/
+cp -rf skynet/service skynet-bin/
+cp -f skynet/skynet skynet-bin/skynet
 
-mv bin phicomm-tv-ctrl
-tar -zcvf phicomm-tv-ctrl.tar.gz phicomm-tv-ctrl
+tar -zcvf skynet-bin.tar.gz skynet-bin
+

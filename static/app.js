@@ -34,7 +34,7 @@ $(".direction,.otherbtn").on(isSupportTouch ? "touchend touchmove" : "mouseup mo
 function postKeyCode(keyCode){
     $.ajax({
         type: 'POST',
-        url: '/keyevent',
+        url: '${base_url}/keyevent',
         data: '{"keycode":'+keyCode+',"longclick":false}', // or JSON.stringify ({name: 'jonas'}),
         success: function(data) { console.log('data: ' + data); },
         contentType: "application/json",
@@ -42,7 +42,7 @@ function postKeyCode(keyCode){
     });
 }
 
-$.get('/host', function(ret){
+$.get('${base_url}/host', function(ret){
     $('#host').text(ret);
 })
 
