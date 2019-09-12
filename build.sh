@@ -6,7 +6,7 @@ cd phicomm-tv-ctrl
 
 git submodule update --init
 cd skynet
-make linux
+make linux MALLOC_STATICLIB= SKYNET_DEFINES=-DNOUSE_JEMALLOC
 cd ..
 
 mkdir -p bin
@@ -22,3 +22,5 @@ cp -rf skynet/lualib bin/skynet/
 cp -rf skynet/service bin/skynet/
 cp -f skynet/skynet bin/skynet/
 
+mv bin phicomm-tv-ctrl
+tar -zcvf phicomm-tv-ctrl.tar.gz phicomm-tv-ctrl

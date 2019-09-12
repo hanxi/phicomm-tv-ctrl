@@ -1,0 +1,16 @@
+version: '2'
+
+# ports: 2200
+
+services:
+    tv:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        #restart: always
+        container_name: tv
+        ports:
+            - "2200:80"
+        environment:
+            - TV_HOST=192.168.2.3:8080
+
