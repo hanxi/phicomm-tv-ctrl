@@ -21,6 +21,7 @@ RUN chmod +x start.sh && chmod +x skynet/skynet
 
 ENV PORT=80
 ENV TV_HOST=192.168.2.3:8080
+ENV BASE_URL=
 EXPOSE 80
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["./start.sh"]
