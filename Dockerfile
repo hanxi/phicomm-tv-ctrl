@@ -9,5 +9,10 @@ COPY --from=builder /phicomm-tv-ctrl/phicomm-tv-ctrl.tar.gz /
 RUN tar -zxvf /phicomm-tv-ctrl.tar.gz
 WORKDIR /phicomm-tv-ctrl
 RUN chmod +x start.sh && chmod +x skynet/skynet
-ENTRYPOINT ["./start.sh"]
+ENV PORT=80
+ENV TV_HOST=192.168.2.3:8080
+EXPOSE 80
+RUN apk add --no-cache tini
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["./start.sh"]
 
