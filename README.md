@@ -6,7 +6,7 @@ skynet simpleweb for control phicomm tv
 原理见： https://bbs.hassbian.com/thread-3745-1-1.html 和 http://www.lenashane.com/article/20181106-1205.html
 
 
-# Tes run in Docker
+# Test run in Docker
 
 可以去这里下载最新的 https://hub.docker.com/r/hanxi/phicomm-tv-ctrl
 
