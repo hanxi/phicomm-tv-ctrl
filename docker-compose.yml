@@ -7,7 +7,7 @@ services:
         build:
             context: ./
             dockerfile: Dockerfile
-        #restart: always
+        restart: always
         container_name: tv
         ports:
             - "2200:80"
