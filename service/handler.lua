@@ -7,7 +7,12 @@ local CMD = {}
 local host = skynet.getenv("tv_host")
 local url = "/v1/keyevent"
 function CMD.post_keyevent(query, header, body)
-    return httpc.request("POST", host, url, nil, header, body)
+    local ret, code, b = pcall(httpc.request, "POST", host, url, nil, header, body)
+    if ret then
+        return code, b
+    else
+        return 500, "Server Internal Error"
+    end
 end
 
 function CMD.get_host()
@@ -22,7 +27,7 @@ skynet.start(function()
         if f then
             skynet.ret(skynet.pack(f(...)))
         else
-            skynet.ret(skynet.pack("404 Not found", 404))
+            skynet.ret(skynet.pack(404, "404 Not found"))
         end
     end)
 end)
