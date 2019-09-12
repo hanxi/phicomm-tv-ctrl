@@ -23,6 +23,7 @@ local function response(id, ...)
     end
 end
 
+local base_url = skynet.getenv("base_url")
 skynet.start(function()
 	handler = assert(skynet.uniqueservice "handler")
     skynet.dispatch("lua", function (_,_,id)
@@ -34,6 +35,9 @@ skynet.start(function()
                 response(id, code)
             else
                 local action, query = urllib.parse(url)
+                if base_url ~= '' then
+                    action = action:gsub(base_url, '')
+                end
                 if action == "/" then
                     action = "/static/index.html"
                 end

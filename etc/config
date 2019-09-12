@@ -15,4 +15,4 @@ http_port = "$PORT"
 static_path = "./static/"
 
 tv_host = "$TV_HOST"
-
+base_url = "$BASE_URL"

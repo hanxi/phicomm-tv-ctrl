@@ -13,4 +13,5 @@ services:
             - "2200:80"
         environment:
             - TV_HOST=192.168.2.3:8080
+            - BASE_URL=/tv
 
