@@ -4,6 +4,7 @@ local root = skynet.getenv "static_path" or "./static/"
 
 local cache = setmetatable({}, { __mode = "kv"  })
 
+local base_url = skynet.getenv("base_url") or ''
 local function cachefile(_, filename)
 	local v = cache[filename]
 	if v then
@@ -13,6 +14,7 @@ local function cachefile(_, filename)
 	if f then
 		local content = f:read "a"
 		f:close()
+        content:gsub('${base_url}', base_url)
 		cache[filename] = { content }
 		return content
 	else

@@ -23,7 +23,7 @@ local function response(id, ...)
     end
 end
 
-local base_url = skynet.getenv("base_url")
+local base_url = skynet.getenv("base_url") or ''
 skynet.start(function()
 	handler = assert(skynet.uniqueservice "handler")
     skynet.dispatch("lua", function (_,_,id)
